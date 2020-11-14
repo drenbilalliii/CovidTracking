@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Corona Tracking</title>
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    <link href="scrolling-nav.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+
+
+<header class="bg-primary text-white">
+    <div class="container text-center">
+        <h1>Welcome to Tracking Corona Virus</h1>
+        <p class="lead">This application lists the current number of cases reported and deaths across the globe</p>
+    </div>
+</header>
+
+
+
+<section id="services" class="bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="jumbotron">
+                    <h1 class="display-4" th:text="${totalReportedCases}">0</h1>
+                    <p class="lead">Total cases reported as of today</p>
+                    <span class="badge badge-danger">Most Infected Country For The Day</span>
+                    <p class="text-danger" th:text="${biggestlocationState}"></p>
+                    <span class="badge badge-danger">Country With The Highest Death Rate Today</span>
+                    <p class="text-danger" th:text="${biggestlocationbyDeath}"></p>
+                    </p>
+                    <span class="badge badge-secondary">New</span>
+                    <p>
+                        <span>New cases reported since previous day:</span>
+                        <span th:text="${totalNewCases}"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <table class="table">
+        <thead class="thead-dark">
+        <thead>
+        <th>State</th>
+        <th>Country</th>
+        <th>Total cases reported</th>
+        <th>Changes since last day</th>
+        <th>Total Deaths</th>
+
+        </tr>
+        </thead>
+            <tr th:each="locationStat : ${locationStats}">
+                <td th:text="${locationStat.state}"></td>
+                <td th:text="${locationStat.country}"></td>
+                <td th:text="${locationStat.latestTotalCases}">0</td>
+                <td th:text="${locationStat.diffFromPrevDay}">0</td>
+                <td th:text="${locationStat.deaths}">0</td>
+            </tr>
+
+        </table>
+    </div>
+</section>
+
+
+
+
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+>
+<script src="js/scrolling-nav.js"></script>
+
+</body>
+
+</html>
